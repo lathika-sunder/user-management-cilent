@@ -1,22 +1,27 @@
 import React, { useState } from "react";
-import { CssVarsProvider, useColorScheme } from "@mui/joy/styles";
+import { CssVarsProvider } from "@mui/joy/styles";
 import Sheet from "@mui/joy/Sheet";
 import Typography from "@mui/joy/Typography";
 import FormControl from "@mui/joy/FormControl";
 import FormLabel from "@mui/joy/FormLabel";
 import Input from "@mui/joy/Input";
 import Button from "@mui/joy/Button";
-import Link from "@mui/joy/Link";
-import { green } from "@mui/material/colors";
+import { useNavigate } from "react-router-dom";
 import landingImage from "../../assets/images/login-image.png";
 import "./LoginPage.css";
 import logo from "../../assets/images/logo.png";
+import DashboardPage from "../DashboardPage/DashboardPage";
+import ErrorComp from "../../components/ErrorComp/ErrorComp";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css"; // Import toast styles
 import axios from "axios";
 
 export default function LoginPage() {
   const [mail, setMail] = useState("");
   const [password, setPassword] = useState("");
   const [emailError, setEmailError] = useState(false);
+  const [isLoggedIn,setIsLoggedIn]=useState(false)
+  const navigate = useNavigate();
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -27,14 +32,25 @@ export default function LoginPage() {
     setMail(inputEmail);
     setEmailError(!isValidEmail(inputEmail));
   };
-  
+
   const handlePasswordChange = (event) => {
     setPassword(event.target.value);
   };
 
-  const handleSubmit = async () => {};
-
-
+  const handleSubmit = async () => {
+    // const response=await axios.post("localhost:3000/api/users")
+    if (1==1) {
+      // Successfully logged in
+      setIsLoggedIn(true)
+    } else {
+      // Display error toast
+      toast.error("Invalid credentials. Please try again.");
+    }
+  };
+if(isLoggedIn)
+{
+  navigate("/dashboard");
+}
   return (
     <CssVarsProvider>
       <main className="login-container">
@@ -45,10 +61,10 @@ export default function LoginPage() {
           <Sheet
             sx={{
               width: 250,
-              mx: "auto", // margin left & right
-              border: "10px ",
-              py: 8, // padding top & bottom
-              px: 3, // padding left & right
+              mx: "auto",
+              border: "10px",
+              py: 8,
+              px: 3,
               display: "flex",
               flexDirection: "column",
               borderRadius: "sm",
@@ -57,12 +73,12 @@ export default function LoginPage() {
             variant="outlined"
           >
             <div className="logo-img">
-              <img src={logo} alt="logo"></img>
+              <img src={logo} alt="logo" />
             </div>
             <FormControl>
               <FormLabel>Email</FormLabel>
               <Input
-                style={{ fontSize: 10,color:"black" }}
+                style={{ fontSize: 10, color: "black" }}
                 name="email"
                 type="email"
                 placeholder="name@email.com"
@@ -70,20 +86,20 @@ export default function LoginPage() {
                 error={emailError}
               />
               {emailError && (
-               <Typography variant="caption" color="error" fontSize={10} fontStyle={"italic"}>
-              
-                Enter a valid mail id
-               
-             </Typography>
-             
+                <Typography
+                  variant="caption"
+                  color="error"
+                  fontSize={10}
+                  fontStyle={"italic"}
+                >
+                  Enter a valid mail id
+                </Typography>
               )}
             </FormControl>
 
             <FormControl>
               <FormLabel>Password</FormLabel>
               <Input
-                // html input attribute
-
                 style={{ fontSize: 10 }}
                 name="password"
                 type="password"
@@ -92,12 +108,13 @@ export default function LoginPage() {
               />
             </FormControl>
 
-            <Button sx={{ mt: 1 /* margin top */ }} onClick={handleSubmit}>
+            <Button sx={{ mt: 1 }} onClick={handleSubmit}>
               Login
             </Button>
           </Sheet>
         </div>
       </main>
+      <ToastContainer position="top-right" autoClose={3000} />
     </CssVarsProvider>
   );
 }

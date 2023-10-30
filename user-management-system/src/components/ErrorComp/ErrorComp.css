@@ -1,0 +1,9 @@
+.error-dialog{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+  
+}
+.error-dialog btn{
+    margin-top: 2vh;
+}

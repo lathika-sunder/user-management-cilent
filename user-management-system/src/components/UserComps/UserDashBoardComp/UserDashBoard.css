@@ -1,0 +1,43 @@
+.dashboard-container {
+  display: flex;
+  flex-direction: row;
+  width: 100%; background-color: #CCE1F6;
+}
+.welcome-container {
+  width: 100%;
+}
+.dashboard-img {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 80vh;
+  }
+.dashboard-img img {
+  height: 70vh;
+}
+.msg-container {
+  width: 100%;
+  height: 25vh;
+  text-align: start;
+  align-items: flex-start;
+  background: rgb(2, 0, 36);
+  background: linear-gradient(
+    90deg,
+    rgba(2, 0, 36, 1) 0%,
+    rgba(9, 9, 121, 1) 35%,
+    rgba(0, 212, 255, 1) 100%
+  );
+}
+.msg-container h1 {
+  color: rgb(159, 200, 255);
+  font-size: x-large;
+  padding-bottom: 0%;
+}
+.msg-container span {
+  color: rgb(255, 255, 255);
+}
+.sm-msg {
+    color: rgb(255, 255, 255);
+   font-size: small;
+    font-style: italic;
+  }

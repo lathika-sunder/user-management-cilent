@@ -1,0 +1,65 @@
+/* UserNavbar.css */
+.nav-content {
+    width: 200px; /* Set the width of the menu */
+    transition: width 0.3s ease; /* Add transition for smooth animation */
+  }
+  body{
+    padding: 0%;
+    margin: 0%;
+  }
+  .menu-btn {
+    display: none; /* Hide the menu button by default on larger screens */
+  }
+  
+  /* Styling for the menu button */
+  .menu-btn button {
+    background-color: transparent;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+  }
+  
+  /* Styling for list items */
+  .nav-content ul {
+    list-style: none;
+    padding: 0;
+    font-size: small;
+    font-weight: bold;
+  }
+  
+  .nav-content li {
+    margin: 10px 0;
+    
+  }
+  .nav-content a{
+    text-decoration: none;
+    color: black;
+  }
+  /* Collapsed menu on small screens */
+  @media screen and (max-width: 768px) {
+    .nav-content {
+      width: 0; /* Collapse the menu by default on small screens */
+    }
+  
+    .nav-content.collapsed {
+      width: 240px; /* Expand the menu when the menu button is clicked */
+    }
+  
+    .nav-content .text {
+        visibility: hidden;/* Collapse the menu by default on small screens */
+      }
+  }
+  /*Logo Image*/
+.logo-img img{
+  height: 4vh;
+  width: 24vh;
+  padding: 10vh;
+
+}
+.logo-img{
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
+
+}
