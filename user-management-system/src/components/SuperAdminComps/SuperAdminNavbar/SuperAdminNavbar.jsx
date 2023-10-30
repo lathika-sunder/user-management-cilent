@@ -6,14 +6,14 @@ import List from "@mui/joy/List";
 import Divider from "@mui/joy/Divider";
 import ListItem from "@mui/joy/ListItem";
 import ListItemButton from "@mui/joy/ListItemButton";
-import { Menu, ExitToApp, Dashboard, People } from "@mui/icons-material";
+import { Menu, ExitToApp, Dashboard, People, Person } from "@mui/icons-material";
 import { useTheme } from "@mui/material/styles";
 import { useMediaQuery } from "@mui/material";
-import "./AdminNavbar.css";
+import "./SuperAdminNavbar.css";
 import { Link } from "react-router-dom";
 import logo from "../../../assets/images/logo.png";
 
-export default function AdminNavbar() {
+export default function SuperAdminNavbar() {
   const theme = useTheme();
   const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
 
@@ -37,6 +37,7 @@ export default function AdminNavbar() {
               </ListItem>
               {[
                 { icon: <Dashboard />, className: "dashboard" },
+                { icon: <Person />, className: "admins" },
                 { icon: <People />, className: "users" },
                 { icon: <ExitToApp />, className: "logout" },
                 
@@ -65,6 +66,12 @@ export default function AdminNavbar() {
                 icon: <Dashboard />,
                 path: "/dashboard",
                 className: "dashboard",
+              },
+              {
+                text: "Admins",
+                icon: <Person />,
+                className: "admins",
+                path: "/admins",
               },
               {
                 text: "Users",

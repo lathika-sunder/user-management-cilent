@@ -14,8 +14,8 @@ const HeaderComp = () => {
    
       
     <div className="header-content">
-      <Typography>
-        <p>Hello, User</p>
+      <Typography style={{paddingLeft:15, fontWeight:'bold'}}>
+        <p>Hello, <span style={{color:'#1976d2'}}>User</span></p>
       </Typography>
       <div className="">
         <SearchComp />
