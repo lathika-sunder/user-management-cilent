@@ -22,6 +22,7 @@ export default function LoginPage() {
   const [emailError, setEmailError] = useState(false);
   const [isLoggedIn,setIsLoggedIn]=useState(false)
   const navigate = useNavigate();
+  const user={mail,password}
 
   function isValidEmail(email) {
     return /\S+@\S+\.\S+/.test(email);
@@ -38,15 +39,23 @@ export default function LoginPage() {
   };
 
   const handleSubmit = async () => {
-    // const response=await axios.post("localhost:3000/api/users")
-    if (1==1) {
-      // Successfully logged in
-      setIsLoggedIn(true)
-    } else {
-      // Display error toast
-      toast.error("Invalid credentials. Please try again.");
+    try {
+      const response = await axios.post("http://localhost:3000/login", { mail, password });
+  
+      if (response.status === 200 && response.data.success) {
+        // Successfully logged in
+        setIsLoggedIn(true);
+        navigate("/dashboard");
+      } else {
+        // Display error toast
+        toast.error("Invalid credentials. Please try again.");
+      }
+    } catch (error) {
+      console.error('Error during login:', error);
     }
   };
+  
+  
 if(isLoggedIn)
 {
   navigate("/dashboard");
