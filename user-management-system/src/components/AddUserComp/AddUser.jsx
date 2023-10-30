@@ -39,9 +39,9 @@ const AddUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/users', user); // Assuming your backend API endpoint for creating users is '/users'
+      await axios.post('http://localhost:3000/users', user); 
       console.log('User added successfully!');
-      // You can redirect the user to another page or show a success message here.
+      
     } catch (error) {
       console.error('Error adding user:', error);
     }
@@ -114,7 +114,7 @@ const AddUser = () => {
             margin="normal"
           />
         </Grid>
-        {/* Add more fields as needed */}
+       
         <Grid item xs={12}>
           <Button type="submit" variant="contained" color="primary">
             Add User
