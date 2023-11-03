@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Table from "@mui/joy/Table";
-import { Button, Dialog, DialogContent } from "@mui/material";
+import { Button, Dialog, DialogContent, Pagination } from "@mui/material";
 import "./UsersTable.css";
 import ViewUser from '../../components/ViewUserComp/ViewUserComp'
 
@@ -29,6 +29,7 @@ export default function UserTable() {
   
   const [openDialog, setOpenDialog] = useState(false);
   const [selectedUserId, setSelectedUserId] = useState(null);
+
   const startIndex = (currentPage - 1) * ITEMS_PER_PAGE;
   const endIndex = startIndex + ITEMS_PER_PAGE;
   const currentData = data.slice(startIndex, endIndex);
@@ -41,6 +42,9 @@ export default function UserTable() {
   const handleCloseDialog = () => {
     setOpenDialog(false);
   };
+  const handlePageChange=(event,newPage)=>{
+    setCurrentPage(newPage)
+  }
 
   return (
     <div className="user-table">
@@ -61,7 +65,7 @@ export default function UserTable() {
             cursor: "pointer",
           }}
         >
-          {data.map((row) => (
+          {currentData.map((row) => (
             <tr key={row._id}>
               <td>{row.userId}</td>
               <td>{row.name}</td>
@@ -87,12 +91,15 @@ export default function UserTable() {
         </DialogContent>
       </Dialog>
       <div className="pagination">
-        {Array.from({ length: Math.ceil(data.length / ITEMS_PER_PAGE) }).map((_, index) => (
-          <button key={index} onClick={() => setCurrentPage(index + 1)}>
-            {index + 1}
-          </button>
-        ))}
+        <Pagination
+          count={Math.ceil(data.length / ITEMS_PER_PAGE)}
+          page={currentPage}
+          onChange={handlePageChange}
+          color="primary"
+          size="small"
+        />
       </div>
+
     </div>
   );
 }

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { TextField, Button, Grid, Autocomplete, Stack, Typography } from "@mui/material";
+import { TextField, Button, Grid, Autocomplete, Stack, Typography, Pagination } from "@mui/material";
 import axios from "axios";
 import "./AddUser.css";
 
@@ -182,7 +182,7 @@ const AddUser = ({onClose}) => {
             }}
           />
         </Grid>
-        {/* Add more fields as needed */}
+       
         <Grid item xs={12}>
           <Button type="submit" variant="contained" color="primary">
             Add User
