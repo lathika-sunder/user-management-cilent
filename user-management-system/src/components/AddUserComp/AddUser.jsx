@@ -51,8 +51,9 @@ const AddUser = ({onClose}) => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post("http://localhost:3000/users", user);
-      console.log("User added successfully!");
+      await axios.post('http://localhost:3000/users', user);
+      console.log('User added successfully!');
+
     } catch (error) {
       console.error("Error adding user:", error);
     }
@@ -181,13 +182,9 @@ const AddUser = ({onClose}) => {
             }}
           />
         </Grid>
-        <Grid item xs={12} textAlign={"center"}>
-          <Button
-            type="submit"
-            variant="contained"
-            color="primary"
-            style={{ fontSize: 8, textAlign: "center" }}
-          >
+        {/* Add more fields as needed */}
+        <Grid item xs={12}>
+          <Button type="submit" variant="contained" color="primary">
             Add User
           </Button>
         </Grid>
