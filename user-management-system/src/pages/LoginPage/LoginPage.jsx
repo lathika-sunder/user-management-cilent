@@ -61,7 +61,9 @@ if(isLoggedIn)
   navigate("/dashboard");
 }
   return (
-    <CssVarsProvider>
+    <div className="login-page">
+      <ToastContainer />
+      <CssVarsProvider>
       <main className="login-container">
         <div className="image-container">
           <img src={landingImage} alt="Login Image" />
@@ -125,5 +127,6 @@ if(isLoggedIn)
       </main>
       <ToastContainer position="top-right" autoClose={3000} />
     </CssVarsProvider>
+    </div>
   );
 }

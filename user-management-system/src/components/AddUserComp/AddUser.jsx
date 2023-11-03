@@ -1,19 +1,31 @@
-import React, { useState } from 'react';
-import { TextField, Button, Grid } from '@mui/material';
-import axios from 'axios';
+import React, { useEffect, useState } from "react";
+import { TextField, Button, Grid, Autocomplete, Stack, Typography } from "@mui/material";
+import axios from "axios";
+import "./AddUser.css";
 
-const AddUser = () => {
+const AddUser = ({onClose}) => {
+  const [roles, setRoles] = useState([]);
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        let response = await axios.get("http://localhost:3000/roles");
+        setRoles(response.data);
+      } catch (error) {
+        console.log("Error", error);
+      }
+    };
+
+    fetchData();
+  }, []);
+
   const [user, setUser] = useState({
-    userId: '',
-    password: '',
-    email: '',
-    name: '',
-    contactNumber: {
-      countryCode: '',
-      phoneNumber: '',
-    },
-    userType: 'user',
-    roleId: null,
+    userId: "",
+    password: "",
+    email: "",
+    name: "",
+    contactNumber:"",
+    userType: "user",
+    role: null,
     isActive: true,
   });
 
@@ -39,18 +51,23 @@ const AddUser = () => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await axios.post('http://localhost:3000/users', user); // Assuming your backend API endpoint for creating users is '/users'
-      console.log('User added successfully!');
-      // You can redirect the user to another page or show a success message here.
+      await axios.post("http://localhost:3000/users", user);
+      console.log("User added successfully!");
     } catch (error) {
-      console.error('Error adding user:', error);
+      console.error("Error adding user:", error);
     }
   };
 
   return (
-    <form onSubmit={handleSubmit} style={{ backgroundColor: 'white', padding: '20px' }}>
-      <Grid container spacing={2}>
-        <Grid item xs={6}>
+    <form
+      onSubmit={handleSubmit}
+      style={{ backgroundColor: "white", fontSize: 3 ,width:300, padding:10}}
+    >
+      <Typography >
+      <h4>Add User</h4>
+      </Typography>
+      <Grid >
+        <Grid item xs={5}>
           <TextField
             label="User ID"
             name="userId"
@@ -59,9 +76,94 @@ const AddUser = () => {
             required
             fullWidth
             margin="normal"
+            InputProps={{
+              style: { fontSize: 8 },
+            }}
+            InputLabelProps={{
+              style: { fontSize: 10 },
+            }}
           />
         </Grid>
-        <Grid item xs={6}>
+        <Grid item xs={5}>
+          <TextField
+            label="Name"
+            name="name"
+            value={user.name}
+            onChange={handleChange}
+            fullWidth
+            margin="normal"
+            InputProps={{
+              style: { fontSize: 8 },
+            }}
+            InputLabelProps={{
+              style: { fontSize: 10 },
+            }}
+          />
+        </Grid>
+
+        <Grid item xs={5}>
+          <TextField
+            label="Email"
+            name="email"
+            value={user.email}
+            onChange={handleChange}
+            required
+            fullWidth
+            margin="normal"
+            InputProps={{
+              style: { fontSize: 8 },
+            }}
+            InputLabelProps={{
+              style: { fontSize: 10 },
+            }}
+          />
+        </Grid>
+
+        <Grid item xs={5}>
+          <TextField
+            label="Phone Number"
+            name="phoneNumber"
+            value={user.contactNumber.phoneNumber}
+            onChange={handleContactNumberChange}
+            fullWidth
+            margin="normal"
+            InputProps={{
+              style: { fontSize: 8 },
+            }}
+            InputLabelProps={{
+              style: { fontSize: 10 },
+            }}
+          />
+        </Grid>
+        <Grid item xs={5} >
+          <Autocomplete
+            options={roles.map((option) => option.label)}
+            renderInput={(params) => (
+              <TextField
+                {...params}
+                label="User Role"
+                InputLabelProps={{
+                  style: { fontSize: 10 },
+                }}
+                size="small"
+                style={{marginTop:"2.5vh",}}
+                sx={{
+                  "& .MuiAutocomplete-input": {
+                    height: "5vh",
+                    
+                    fontSize: 8,
+                  },
+                }}
+              />
+            )}
+            ListboxComponent={({ children, ...props }) => (
+              <ul {...props} style={{ fontSize: 8 }}>
+                {children}
+              </ul>
+            )}
+          />
+        </Grid>
+        <Grid item xs={5} >
           <TextField
             label="Password"
             type="password"
@@ -71,52 +173,21 @@ const AddUser = () => {
             required
             fullWidth
             margin="normal"
+            InputProps={{
+              style: { fontSize: 8 },
+            }}
+            InputLabelProps={{
+              style: { fontSize: 10 },
+            }}
           />
         </Grid>
-        <Grid item xs={6}>
-          <TextField
-            label="Email"
-            name="email"
-            value={user.email}
-            onChange={handleChange}
-            required
-            fullWidth
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            label="Name"
-            name="name"
-            value={user.name}
-            onChange={handleChange}
-            fullWidth
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            label="Country Code"
-            name="countryCode"
-            value={user.contactNumber.countryCode}
-            onChange={handleContactNumberChange}
-            fullWidth
-            margin="normal"
-          />
-        </Grid>
-        <Grid item xs={6}>
-          <TextField
-            label="Phone Number"
-            name="phoneNumber"
-            value={user.contactNumber.phoneNumber}
-            onChange={handleContactNumberChange}
-            fullWidth
-            margin="normal"
-          />
-        </Grid>
-        {/* Add more fields as needed */}
-        <Grid item xs={12}>
-          <Button type="submit" variant="contained" color="primary">
+        <Grid item xs={12} textAlign={"center"}>
+          <Button
+            type="submit"
+            variant="contained"
+            color="primary"
+            style={{ fontSize: 8, textAlign: "center" }}
+          >
             Add User
           </Button>
         </Grid>

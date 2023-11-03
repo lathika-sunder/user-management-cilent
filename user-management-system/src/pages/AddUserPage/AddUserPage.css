@@ -1,0 +1,8 @@
+.add-user{
+    display: flex;
+    
+}
+.add-user-form{
+    padding: 2vh;
+    background-color: aliceblue;
+}

@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
@@ -8,8 +8,19 @@ import NotificationsIcon from '@mui/icons-material/Notifications';
 
 import './HeaderComp.css'; // Import your CSS file
 import SearchComp from '../SearchComp/SearchComp';
+import { Button, Dialog, DialogContent, Grid } from '@mui/material';
+import AddUser from '../AddUserComp/AddUser';
 
 const HeaderComp = () => {
+  const [openDialog, setOpenDialog] = useState(false);
+
+  const handleOpenDialog = () => {
+    setOpenDialog(true);
+  };
+
+  const handleCloseDialog = () => {
+    setOpenDialog(false);
+  };
   return (
    
       
@@ -19,8 +30,24 @@ const HeaderComp = () => {
       </Typography>
       <div className="">
         <SearchComp />
+
       </div>
+      <div className="add-user-button">
+      <Grid item xs={12} textAlign={"center"}>
+          
+          <Button
+            variant="contained"
+            color="primary"
+            style={{ fontSize: 8, textAlign: "center" }}
+            onClick={handleOpenDialog}
+          >
+            Add User
+          </Button>
+        </Grid>
+      </div>
+    
         <div className="buttons">
+          
         <IconButton color="inherit" edge="end">
           <AccountCircleIcon />
         </IconButton>
@@ -28,6 +55,11 @@ const HeaderComp = () => {
           <NotificationsIcon />
         </IconButton>
         </div>
+        <Dialog open={openDialog} onClose={handleCloseDialog}>
+          <DialogContent>
+            <AddUser onClose={handleCloseDialog} /> 
+          </DialogContent>
+        </Dialog>
     </div>
  
   );

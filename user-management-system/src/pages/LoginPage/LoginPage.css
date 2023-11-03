@@ -6,8 +6,12 @@
   margin: 0%;
 }
 body {
-  background-color: #1976d2;
+  
   user-select: none;
+}
+.login-page{
+  background-color: #1976d2;
+  height: 100vh;
 }
 
 .image-container img {

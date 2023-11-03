@@ -7,6 +7,8 @@ import LoginPage from './pages/LoginPage/LoginPage'
 import DashboardPage from './pages/DashboardPage/DashboardPage'
 import ErrorComp from './components/ErrorComp/ErrorComp'
 import AddUser from './components/AddUserComp/AddUser'
+import UsersPage from './pages/UsersPage/UsersPage'
+import AddUserPage from './pages/AddUserPage/AddUserPage'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -15,9 +17,8 @@ function App() {
    <React.Fragment>
     <BrowserRouter>
     <Routes>
-      <Route exact path='/login' element={<LoginPage />}></Route>
+      <Route exact path='/' element={<LoginPage />}></Route>
       <Route exact path='/dashboard' element={<DashboardPage />}></Route>
-      <Route exact path='/add-user' element={<AddUser/>}></Route>
       
     </Routes>
     </BrowserRouter>

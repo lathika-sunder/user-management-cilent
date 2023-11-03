@@ -15,7 +15,7 @@ import logo from "../../../assets/images/logo.png";
 
 export default function AdminNavbar() {
   const theme = useTheme();
-  const isSmallScreen = useMediaQuery(theme.breakpoints.down("sm"));
+ 
 
   return (
     <Box
@@ -26,32 +26,8 @@ export default function AdminNavbar() {
         flexDirection: "column",
       }}
     >
-      {isSmallScreen ? (
-        <>
-          <Box role="presentation" className="nav-content">
-            <List>
-              <ListItem>
-                <div className="logo-img">
-                  <img src={logo} alt="logo"></img>
-                </div>
-              </ListItem>
-              {[
-                { icon: <Dashboard />, className: "dashboard" },
-                { icon: <People />, className: "users" },
-                { icon: <ExitToApp />, className: "logout" },
-                
-              ].map((item, index) => (
-                <ListItem key={index} className={item.className}>
-                  <ListItemButton>
-                    <span className="icon">{item.icon}</span>
-                  </ListItemButton>
-                </ListItem>
-              ))}
-            </List>
-            <Divider />
-          </Box>
-        </>
-      ) : (
+      
+        
         <Box role="presentation" className="nav-content">
           <List>
             <ListItem>
@@ -61,21 +37,16 @@ export default function AdminNavbar() {
             </ListItem>
             {[
               {
-                text: "Dashboard",
+                text: "Users",
                 icon: <Dashboard />,
                 path: "/dashboard",
                 className: "dashboard",
               },
-              {
-                text: "Users",
-                icon: <People />,
-                className: "users",
-                path: "/users",
-              },
+             
               {
                 text: "Log Out",
                 icon: <ExitToApp />,
-                path: "/login",
+                path: "/",
                 className: "logout",
               },
               
@@ -93,8 +64,7 @@ export default function AdminNavbar() {
             ))}
           </List>
           <Divider />
-        </Box>
-      )}
+        </Box> 
     </Box>
   );
 }
