@@ -51,16 +51,7 @@
   }
   
 /*Logo Image*/
-.logo-img img{
-    height: 4vh;
-    width: 24vh;
-    padding: 10vh;
-  
-}
 .logo-img{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-
+  height: 2vh;
+  padding: 0%;
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import AdminNavbar from "../AdminNavbar/AdminNavbar";
+import AdminNavbar from "../../AdminComps/AdminNavbar/AdminNavbar";
 import UsersTable from "../../UsersTable/UsersTable";
 import './SuperAdminDashBoard.css'
 import HeaderComp from "../../HeaderComp/HeaderComp";

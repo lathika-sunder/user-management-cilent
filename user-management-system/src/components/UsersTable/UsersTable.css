@@ -1,5 +1,5 @@
 .user-table{
-    padding: 2vh;
+    padding: 3vh;
 }
 .pagination{
     margin-top: 10px;
@@ -8,4 +8,12 @@
     align-items: flex-end;
     justify-content: center;
     position: static;
+}
+.action-buttons{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+.user-table th{
+    text-align: center;
 }

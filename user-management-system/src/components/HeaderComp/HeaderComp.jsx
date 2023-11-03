@@ -26,7 +26,7 @@ const HeaderComp = () => {
       
     <div className="header-content">
       <Typography style={{paddingLeft:15, fontWeight:'bold'}}>
-        <p>Hello, <span style={{color:'#1976d2'}}>User</span></p>
+        Hello, <span style={{color:'#1976d2'}}>User</span>
       </Typography>
       <div className="">
         <SearchComp />
@@ -46,7 +46,7 @@ const HeaderComp = () => {
         </Grid>
       </div>
     
-        <div className="buttons">
+        <div className="icon-buttons">
           
         <IconButton color="inherit" edge="end">
           <AccountCircleIcon />

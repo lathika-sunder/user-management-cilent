@@ -61,7 +61,7 @@ if(isLoggedIn)
   navigate("/dashboard");
 }
   return (
-    <div className="login-page">
+    <div className="login-page" style={{backgroundColor:" #1976d2"}}>
       <ToastContainer />
       <CssVarsProvider>
       <main className="login-container">
@@ -78,14 +78,12 @@ if(isLoggedIn)
               px: 3,
               display: "flex",
               flexDirection: "column",
-              borderRadius: "sm",
-              boxShadow: "md",
+            backgroundColor:"white"
+              
             }}
             variant="outlined"
           >
-            <div className="logo-img">
-              <img src={logo} alt="logo" />
-            </div>
+           
             <FormControl>
               <FormLabel>Email</FormLabel>
               <Input

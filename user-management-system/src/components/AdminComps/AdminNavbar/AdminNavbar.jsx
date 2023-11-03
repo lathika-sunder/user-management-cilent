@@ -29,40 +29,35 @@ export default function AdminNavbar() {
       
         
         <Box role="presentation" className="nav-content">
-          <List>
-            <ListItem>
-              <div className="logo-img">
-                <img src={logo} alt="logo"></img>
-              </div>
-            </ListItem>
-            {[
-              {
-                text: "Users",
-                icon: <Dashboard />,
-                path: "/dashboard",
-                className: "dashboard",
-              },
+        <List>
+          <ListItem></ListItem>
+          <Link to="/dashboard">
+          <ListItem >
+         
+            <ListItemButton >
              
-              {
-                text: "Log Out",
-                icon: <ExitToApp />,
-                path: "/",
-                className: "logout",
-              },
+                <span className="icon">
+                  <Dashboard />
+                </span>
+                <span className="text" style={{textAlign:"center"}}>Users</span>
               
-            ].map((item, index) => (
-              <ListItem key={index} className={item.className}>
-                <ListItemButton>
-                  <Link to={item.path}>
-                    <span className="icon">{item.icon}</span>
-                  </Link>
-                  <Link to={item.path}>
-                    <span className="text">{item.text}</span>
-                  </Link>
-                </ListItemButton>
-              </ListItem>
-            ))}
-          </List>
+            </ListItemButton>
+            
+          </ListItem>
+          </Link>
+          <Link to="/">
+          <ListItem >
+            
+            <ListItemButton >
+                <span className="icon">
+                  <ExitToApp />
+                </span>
+                <span className="text" style={{textAlign:"center"}}> Log Out</span>
+            </ListItemButton>
+            
+          </ListItem>
+          </Link>
+        </List>
           <Divider />
         </Box> 
     </Box>

@@ -82,7 +82,7 @@ export default function SuperAdminNavbar() {
               {
                 text: "Log Out",
                 icon: <ExitToApp />,
-                path: "/login",
+                path: "/",
                 className: "logout",
               },
               

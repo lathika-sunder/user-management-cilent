@@ -9,6 +9,7 @@ import ErrorComp from './components/ErrorComp/ErrorComp'
 import AddUser from './components/AddUserComp/AddUser'
 import UsersPage from './pages/UsersPage/UsersPage'
 import AddUserPage from './pages/AddUserPage/AddUserPage'
+import NotFoundErrorComp from './components/NotFoundErrorComp/NotFoundErrorComp'
 
 function App() {
   const [count, setCount] = useState(0)
@@ -19,7 +20,9 @@ function App() {
     <Routes>
       <Route exact path='/' element={<LoginPage />}></Route>
       <Route exact path='/dashboard' element={<DashboardPage />}></Route>
-      
+      <Route exact path='/admins' element={<DashboardPage />}></Route>
+      <Route exact path='/users' element={<DashboardPage />}></Route>
+      <Route path="*" element={<NotFoundErrorComp/>} />
     </Routes>
     </BrowserRouter>
    </React.Fragment>

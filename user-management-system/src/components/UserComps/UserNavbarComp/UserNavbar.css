@@ -1,6 +1,8 @@
-/* UserNavbar.css */
+.option{
+  padding: 1vh;
+}
 .nav-content {
-    width: 200px; /* Set the width of the menu */
+     /* Set the width of the menu */
     transition: width 0.3s ease; /* Add transition for smooth animation */
   }
   body{
@@ -28,38 +30,13 @@
   }
   
   .nav-content li {
-    margin: 10px 0;
+    /* margin: 10px 0; */
+    margin-left: 0px;
     
   }
   .nav-content a{
     text-decoration: none;
     color: black;
   }
-  /* Collapsed menu on small screens */
-  @media screen and (max-width: 768px) {
-    .nav-content {
-      width: 0; /* Collapse the menu by default on small screens */
-    }
-  
-    .nav-content.collapsed {
-      width: 240px; /* Expand the menu when the menu button is clicked */
-    }
-  
-    .nav-content .text {
-        visibility: hidden;/* Collapse the menu by default on small screens */
-      }
-  }
+
   /*Logo Image*/
-.logo-img img{
-  height: 4vh;
-  width: 24vh;
-  padding: 10vh;
-
-}
-.logo-img{
-  display: flex;
-  text-align: center;
-  justify-content: center;
-  align-items: center;
-
-}

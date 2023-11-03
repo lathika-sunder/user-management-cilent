@@ -8,7 +8,7 @@ import DeleteUserComp from "../DeleteUserComp/DeleteUserComp";
 
 const ITEMS_PER_PAGE = 5;
 
-export default function UserTable() {
+export default function AdminsTable() {
   const [data, setData] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
   const [isDeleteDialogOpen, setIsDeleteDialogOpen] = useState(false);

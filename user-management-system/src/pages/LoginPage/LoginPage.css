@@ -6,16 +6,27 @@
   margin: 0%;
 }
 body {
-  
   user-select: none;
 }
-.login-page{
-  background-color: #1976d2;
-  height: 100vh;
+/* App.css or your main CSS file */
+html,
+body,
+#root {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+}
+
+.login-page {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .image-container img {
-    height: 90vh;
+  height: 90vh;
   background-color: #1976d2;
 }
 
@@ -25,62 +36,57 @@ body {
 }
 
 .form-container {
-    display: flex;
-    justify-content: center;
-   align-items: center;
-   border-radius: 10%;
-   margin: 2vh;
-  background-color: aliceblue;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 10%;
+  margin: 2vh;
+  background-color: white;
 }
-
-
 
 /*Logo Image*/
-.logo-img img{
-    height: 4vh;
-    width: 24vh;
-    padding: 10vh;
-  
+.logo-img img {
+  height: 4vh;
+  width: 24vh;
+  padding: 10vh;
 }
-.logo-img{
-    display: flex;
-    text-align: center;
-    justify-content: center;
-    align-items: center;
-
+.logo-img {
+  display: flex;
+  text-align: center;
+  justify-content: center;
+  align-items: center;
 }
 
 /*Responsive*/
 /* Media query for smaller screens */
 @media (max-width: 768px) {
-    .login-container{
-        display: flex;
-        flex-direction: column;
-    }
-    .image-container img {
-      height: 40vh; /* Adjust the image height for smaller screens */
-    }
-  
-    .form-container {
-      padding: 2vh; /* Adjust the form container padding for smaller screens */
-      margin: 1vh;
-      height: max-content;
-      border-radius: 1vh;
-      background-color: white;
-    }
-  
-    .logo-img img {
-      height: 5vh;
-      width: 40vw; /* Set maximum width for the logo image */
-      max-height: 6vh; /* Set maximum height for the logo image */
-      padding: 3vh;
-    }
+  .login-container {
+    display: flex;
+    flex-direction: column;
   }
-  
-  /*Tablets*/
-  @media (min-width: 768px) and (max-width: 1024px) {
-    .form-container{
-        border-radius: 1%;
-    }
+  .image-container img {
+    height: 40vh; /* Adjust the image height for smaller screens */
+  }
 
+  .form-container {
+    padding: 2vh; /* Adjust the form container padding for smaller screens */
+    margin: 1vh;
+    height: max-content;
+    border-radius: 1vh;
+    background-color: white;
   }
+
+  .logo-img img {
+    height: 5vh;
+    width: 40vw; /* Set maximum width for the logo image */
+    max-height: 6vh; /* Set maximum height for the logo image */
+    padding: 3vh;
+  }
+}
+
+/*Tablets*/
+@media (min-width: 768px) and (max-width: 1024px) {
+  .form-container {
+    border-radius: 1%;
+  }
+}
